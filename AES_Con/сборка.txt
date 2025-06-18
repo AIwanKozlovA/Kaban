@@ -1,0 +1,5 @@
+Сборка для Linux
+gcc main.c AES.c Slyb.c -o AES
+
+Сборка для Windows
+x86_64-w64-mingw32-gcc main.c AES.c Slyb.c -o AES.exe
