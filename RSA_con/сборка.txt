@@ -1,0 +1,20 @@
+Старое
+g++ -Wall -g -O2 main.cpp -o main -lgmpxx
+g++ -Wall -O2 main.cpp -o main -lgmpxx -lgmp -lcrypto
+Компиляция для Linux (Примечание, чтобы компилировать файлы для Linux желательно установить GMP)
+g++ -Wall -O2 RSA_con_nw.cpp -o RSA_C -lgmpxx -lgmp -lcrypto
+
+
+Компиляция для Windows в моём случае на Linux перед командой для компиляции опишу как установить необходимые библиотеки для mingw, чтобы вы не потеряли непреличное количество времени на тех ошибках, которые совершил я.
+0. сначала нужно скачать сам x86_64-w64-mingw32. Он есть во всех репозиториях с этим проблем не возникнет.
+1. Для mingw скачал GMP( скачав его от от сюда https://packages.msys2.org/packages/mingw-w64-x86_64-gmp  потом установил sudo pacman -U /home/ivan/Загрузки/mingw-w64-x86_64-gmp-6.3.0-2-any.pkg.tar.zst потом настроил имена pacman -Ql mingw-w64-x86_64-gmp | grep include )
+2. Потом скачал Lcrypto(на ARch установил так yay -S mingw-w64-openssl )) Как скачать yay это можно найти в инете с этим проблем не возникнет
+сама команда для компиляции
+x86_64-w64-mingw32-g++ \
+    -I/mingw64/include \
+    -L/mingw64/lib \
+    RSA_con_nw.cpp \
+    -lgmpxx -lgmp -lcrypto \
+    -static-libgcc -static-libstdc++ -static \
+    -o RSA_C.exe
+
