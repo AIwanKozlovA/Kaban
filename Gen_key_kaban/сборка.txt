@@ -1,0 +1,12 @@
+Сборка для Linux
+g++ -Wall -O2 Kaban_gen_hey.cpp -o GEN_key -lgmpxx -lgmp -lcrypto
+
+Компиляция для Windows
+x86_64-w64-mingw32-g++ \
+    -I/mingw64/include \
+    -L/mingw64/lib \
+    Kaban_gen_hey.cpp \
+    -lgmpxx -lgmp -lcrypto \
+    -lbcrypt -liphlpapi -lwlanapi -lcrypt32 -lws2_32 \
+    -static-libgcc -static-libstdc++ \
+    -o GEN_key.exe
