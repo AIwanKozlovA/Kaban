@@ -1,4 +1,11 @@
+#ifdef _WIN32
+#pragma warning(push)
+#pragma warning(disable:4146) // Отключаем предупреждение C4146
 #include <gmpxx.h>
+#pragma warning(pop)
+#else
+#include <gmpxx.h>
+#endif
 #include <vector>
 #include <iostream>
 #include <fstream>
