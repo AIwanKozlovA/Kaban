@@ -2,12 +2,14 @@
 #include <fstream>
 #include <vector>
 
-//#ifdef _WIN32
-//#include "gmp.dll"
-//#include "gmp.lib"
-//#else
+#ifdef _WIN32
+#pragma warning(push)
+#pragma warning(disable:4146) // Отключаем предупреждение C4146
 #include <gmpxx.h>
-//#endif
+#pragma warning(pop)
+#else
+#include <gmpxx.h>
+#endif
 #include <limits>
 #include <memory>
 
