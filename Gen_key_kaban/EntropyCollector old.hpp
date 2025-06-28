@@ -33,6 +33,13 @@
 #include <sys/statvfs.h>
 #include <fcntl.h>
 #endif
+
+
+#ifdef _WIN32
+#include <iphlpapi.h>
+#pragma comment(lib, "iphlpapi.lib")
+#endif
+
 using namespace std;
 class EntropyCollector {
 public:
@@ -239,13 +246,23 @@ private:
         uint64_t tx = 0, rx = 0;
 
         #ifdef _WIN32
-        PMIB_IF_TABLE2 table;
-        if (GetIfTable2Ex(MibIfTableNormal, &table) == NO_ERROR) {
-            for (DWORD i = 0; i < table->NumEntries; i++) {
-                tx += table->Table[i].OutOctets;
-                rx += table->Table[i].InOctets;
+        // Используем старый API GetIfTable для совместимости
+        MIB_IFTABLE* pIfTable = nullptr;
+        DWORD dwSize = 0;
+
+        // Первый вызов - получаем необходимый размер буфера
+        if (GetIfTable(pIfTable, &dwSize, FALSE) == ERROR_INSUFFICIENT_BUFFER) {
+            pIfTable = (MIB_IFTABLE*)malloc(dwSize);
+            if (pIfTable) {
+                // Второй вызов - получаем данные
+                if (GetIfTable(pIfTable, &dwSize, FALSE) == NO_ERROR) {
+                    for (DWORD i = 0; i < pIfTable->dwNumEntries; i++) {
+                        tx += pIfTable->table[i].dwOutOctets;
+                        rx += pIfTable->table[i].dwInOctets;
+                    }
+                }
+                free(pIfTable);
             }
-            FreeMibTable(table);
         }
         #elif __APPLE__
         int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
@@ -286,18 +303,28 @@ private:
         uint32_t count = 0;
 
         #ifdef _WIN32
-        HANDLE hWlan;
+        /*HANDLE hWlan;
         DWORD version;
         if (WlanOpenHandle(2, NULL, &version, &hWlan) == ERROR_SUCCESS) {
             PWLAN_BSS_LIST pBssList = NULL;
-            WlanScan(hWlan, NULL, NULL, NULL, NULL);
-            WlanGetNetworkBssList(hWlan, NULL, dot11_BSS_type_any, false, NULL, &pBssList);
-            if (pBssList) {
-                count = pBssList->dwNumberOfItems;
-                WlanFreeMemory(pBssList);
-            }
-            WlanCloseHandle(hWlan, NULL);
-        }
+            // Указываем NULL для всех параметров, чтобы получить список всех сетей
+            if (WlanGetNetworkBssList(hWlan,
+                NULL,    // Интерфейс (все интерфейсы)
+                NULL,    // DOT11_SSID (все SSID)
+                dot11_BSS_type_any,
+                false,   // Безопасные данные
+                NULL,    // Дополнительные параметры
+                &pBssList) == ERROR_SUCCESS) {
+                if (pBssList) {
+                    count = pBssList->dwNumberOfItems;
+                    WlanFreeMemory(pBssList);
+                }
+                }
+                WlanCloseHandle(hWlan, NULL);*/
+        // Альтернатива: использовать количество сетевых интерфейсов
+        DWORD adapterCount = 0;
+        GetNumberOfInterfaces(&adapterCount);
+        count = adapterCount;
         #elif __APPLE__
         CWInterface* wifi = [CWInterface interfaceWithName:nil];
         NSSet* networks = [wifi scanForNetworksWithName:nil error:nil];
