@@ -16,6 +16,7 @@
 #include <limits>
 #include "EntropyCollector.hpp"
 #define SIZE 256
+using namespace std;
 
 string mpz_to_string(const mpz_class& num) {
     return num.get_str(10);  // 10 is the base for decimal representation
