@@ -21,7 +21,8 @@ void error_file(){ //  Ошибка на случай если файл с яд�
 
 void writeFileFromData(const QString &data, const QString &newFilePath) {
     QByteArray byteArray;
-    QStringList hexValues = data.split(" ", QString::SkipEmptyParts);
+    QStringList hexValues = data.split(" ", QString::SkipEmptyParts); // Для старой версии Qt 5
+    // QStringList hexValues = data.split(" ", Qt::SkipEmptyParts); // Для новой версии Qt 6
 
     for (const QString &hex : hexValues) {
         bool ok;
