@@ -1,27 +1,190 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "AES.h"
+//#define COUNT_BLOCKS_FOR_TEXT 100
 #ifdef _WIN32
 #include <windows.h>
+#include <locale.h>
 #endif
+/*void Sfif_AES_text(char* original_text,unsigned short matrix_shif[100][16], int* block_count, unsigned short secret_key[16]){
+    unsigned short matrix[COUNT_BLOCKS_FOR_TEXT][16];
+    dl_text_to_blocks(original_text, matrix, block_count);
+    print_all_block(matrix, *block_count);
+    for(int i = 0; i < *block_count; i++){
+        cryption(matrix[i], matrix_shif[i], secret_key);
+    }
+}
+
+void Rasfif_AES_text(char*rashif_text, unsigned short matrix_shif[100][16], int* block_count, unsigned short secret_key[16]){
+    unsigned short matrix_rash[COUNT_BLOCKS_FOR_TEXT][16];
+    for(int i = 0; i < *block_count; i++){
+        decryption(matrix_shif[i],matrix_rash[i], secret_key);
+    }
+    blocks_to_text(matrix_rash, *block_count, rashif_text);
+}*/
+void hexStringToMatrix(const char* hexStr, unsigned short matrix[COUNT_BLOCKS_FOR_TEXT][16]) {
+    int row = 0, col = 0;
+    int len = strlen(hexStr);
+    int count = 0;
+    char temp[5] = {0}; // Буфер для 4 символов + '\0'
+
+    memset(matrix, 0, sizeof(unsigned short) * COUNT_BLOCKS_FOR_TEXT * 16); // Обнуление матрицы
+
+    for (int i = 0; i < len && row < COUNT_BLOCKS_FOR_TEXT; ) {
+        // Пропускаем не-шестнадцатеричные символы
+        if (!isxdigit(hexStr[i])) {
+            i++;
+            continue;
+        }
+
+        // Собираем 4 символа (2 байта)
+        int j;
+        for (j = 0; j < 4 && i+j < len && isxdigit(hexStr[i+j]); j++) {
+            temp[j] = hexStr[i+j];
+        }
+        temp[j] = '\0';
+
+        if (j == 4) {
+            // Преобразуем в число
+            matrix[row][col] = (unsigned short)strtoul(temp, NULL, 16);
+
+            // Переходим к следующей ячейке
+            col++;
+            if (col >= 16) {
+                col = 0;
+                row++;
+            }
+        }
+        i += j;
+    }
+}
+
+
 int main(int argc, char* argv[]) {
     #ifdef _WIN32
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "");
     #endif
 
-
+    /*/*unsigned short secret_key1[16],secret_key2[16]; char* ss = "86b00e35b518bcf13a3994e51158ea575e300c85dca0a4f10fcc05d3873b1026";
+    text_to_block(ss, secret_key1); // преобразуем текст в блоки
+    for(int j = 0; j < 16; j++) secret_key2[j] = secret_key1[j];
+    printf("1111");
+    char* text = "12345677890abcdefgfs\0",* text1;
+    unsigned short matrix0[100][16], matrix_shif[100][16];
+    unsigned short matrix_rashif[100][16];
+    int dl;
+    printf("Оригинальный блок");
+    dl_text_to_blocks(text, matrix0, &dl);
+    print_all_block(matrix0, dl);
+    Sfif_AES_text(text,matrix_shif, &dl, ss);
+    printf("Зашифрованный блок");
+    print_all_block(matrix_shif, dl);
+    /*for(int i = 0; i < dl; i++){
+        //cryption(matrix0[i], matrix_shif[i], secret_key1);
+        decryption(matrix_shif[i], matrix_rashif[i], secret_key2);
+    }
+    text1 = malloc(sizeof(char)*dl);
+    Rasfif_AES_text(text1, matrix_shif, &dl, ss);
+    //blocks_to_text(matrix_rashif, dl, text1);
+    printf("%s\n", text1);
+    //free(text1);
+    //free(text);
+    return 0;*/
 
     if(argc == 1){
         printf("Моя реализация AES на Си\n");
-        printf("Чтобы зашивровать или расшифровать файл, передайте три аргумента:\n 1) имя входного файла\n 2) как хотите назвать выходной файл\n 3) ключ шифрования\n 4) выбраннай режим (0 режим шифрования, 1 режим расшифровки)\n");
+        printf("Чтобы зашифровать или расшифровать файл, передайте три аргумента:\n 1) имя входного файла\n 2) как хотите назвать выходной файл\n 3) ключ шифрования\n 4) выбраннай режим (0 режим шифрования, 1 режим расшифровки)\n");
         printf("Пример для Linux ./AES оригинальный_файл.txt зашифрованный_файл.txt \"ключ шифрования\" 0\n");
+        printf("Чтобы зашифровать или расшифровать текст, передайте три аргумента:\n 1) текст для шифрования или расшифровки\n 2) ключ шифрования\n 3) выбраннай режим (-t0 режим шифрования, -t1 режим расшифровки)\n");
+        printf("Пример для Linux ./AES \"текст\" \"ключ шифрования\" -t0\n");
         printf("© ИVан КоZлоV\n");
         return 0;
     }
+    if(argc == 4 && argv[3][0] == '-' && argv[3][1] == 't' && argv[3][2] == '0'){
+        unsigned short secret_key1[16],secret_key2[16]; char* ss = argv[2];
+        text_to_block(ss, secret_key1); // преобразуем текст в блоки
+        for(int j = 0; j < 16; j++) secret_key2[j] = secret_key1[j];
+        //printf("1111");
+        char* text = argv[1],* text1;
+        unsigned short matrix0[COUNT_BLOCKS_FOR_TEXT][16], matrix_shif[COUNT_BLOCKS_FOR_TEXT][16];
+        unsigned short matrix_rashif[COUNT_BLOCKS_FOR_TEXT][16];
+        int dl;
+        //printf("Оригинальный блок ");
+        dl_text_to_blocks(text, matrix0, &dl);
+        /*for (int i = 0; i < dl; i++) {
+            for (int j = 0; j < 16; j++) {
+                printf("%04X", matrix0[i][j]); // 4 цифры с ведущими нулями
+            }
+        }printf("\n");*/
+        Sfif_AES_text(text,matrix_shif, &dl, ss);
+        //printf("Зашифрованный блок ");
+        printf("%d ",dl);
+        for (int i = 0; i < dl; i++) {
+            for (int j = 0; j < 16; j++) {
+                printf("%04X", matrix_shif[i][j]); // 4 цифры с ведущими нулями
+            }
+        }printf("\n");
+        return 0;
+    } else if(argc == 4 && argv[3][0] == '-' && argv[3][1] == 't' && argv[3][2] == '1'){
+        //unsigned short matrix_shif[COUNT_BLOCKS_FOR_TEXT][16];
+        //hexStringToMatrix(argv[1], matrix_shif);
+        int dl = 0;
+
+        // 1. Получаем строку из аргумента
+        char* input = argv[1]; // "4 8E0200D398DA7797B71234ABCD5678EF..."
+
+        // 2. Извлекаем числовое значение dl (до первого пробела)
+        char* space_pos = strchr(input, ' ');
+
+        if (space_pos != NULL) {
+            *space_pos = '\0'; // Временно завершаем строку на первом пробеле
+            dl = (int)atoi(input);
+            *space_pos = ' '; // Восстанавливаем пробел
+
+            // 3. Получаем указатель на начало hex-строки (после пробела)
+            char* hexStr = space_pos + 1;
+
+            // 4. Удаляем все пробелы из hex-строки
+            char* p = hexStr;
+            char* q = hexStr;
+            while (*p) {
+                if (*p != ' ') {
+                    *q++ = *p;
+                }
+                p++;
+            }
+            *q = '\0';
+            // 5. Теперь можно передать в функцию преобразования
+            unsigned short matrix[COUNT_BLOCKS_FOR_TEXT][16];
+            hexStringToMatrix(hexStr, matrix);
+            // 6. Проверка результатов
+            //printf("dl = %d\n", dl);
+            //printf("Hex data: %s\n", hexStr);
+            //printf("%04X", matrix[0][0]);
+            printf("\n\0");
+            //printf("%04X\n", matrix[0][0]);
+            char* text1 = malloc(sizeof(char)*dl); char* ss = argv[2];
+            Rasfif_AES_text(text1, matrix, &dl, ss);
+
+            printf("%s\n", text1);
+            free(text1);
+            //free(hexStr);
+            //free(p);
+            //free(q);
+        } else {
+            printf("Invalid input format! Expected: \"<dl> <hex_data>\"\n");
+            return 1;
+        }
+        return 0;
+
+    }
     unsigned short secret_key[16];
     text_to_block(argv[3], secret_key); // преобразуем текст в блоки
+
 
     if(argc < 5){
         printf("Вы ввели слишком мало элементов\n");

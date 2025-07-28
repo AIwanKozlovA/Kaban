@@ -133,13 +133,15 @@ void InvShiftRows(unsigned short matrix[16]){
     matrix[15] = lok;
 }
 // Вывести весь блок
-void print_all_block(unsigned short blocks[16], int block_count){
-    //for (int i = 0; i < block_count; i++) {
+void print_all_block(unsigned short blocks[][16], int block_count){
+    for (int i = 0; i < block_count; i++) {
         for (int j = 0; j < 16; j++) {
-            printf("%02hhx ", blocks[j]);
+            //printf("%02hhx ", blocks[j]);
+            //printf("%02X ", blocks[j]);
+            printf("%hu ", blocks[j]);
         }
         printf("\n");
-    //}
+    }
 }
 
 
