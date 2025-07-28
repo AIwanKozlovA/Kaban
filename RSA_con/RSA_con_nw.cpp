@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
 
     #ifdef _WIN32 // добавляем поддержку кириллицы
     setlocale(LC_ALL, "");
-    setlocale(LC_ALL, "ru_RU.UTF-8");
+    //setlocale(LC_ALL, "ru_RU.UTF-8");
     #endif
 
     /*string original_text = "Привет мир!!!! ZOV 123456789";
