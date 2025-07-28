@@ -16,7 +16,6 @@
 #include <limits>
 #include "EntropyCollector.hpp"
 #define SIZE 256
-using namespace std;
 
 string mpz_to_string(const mpz_class& num) {
     return num.get_str(10);  // 10 is the base for decimal representation
@@ -214,6 +213,11 @@ void gen_key(mpz_class *p,mpz_class *q, mpz_class *n, mpz_class *d, mpz_class* e
 
 
 int main(int argc, char* argv[]){
+    #ifdef _WIN32 // добавляем поддержку кириллицы
+    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+    #endif
+
     if(argc == 1){
         cout<<"Мой генератор ключей"<<endl;
         cout<<"Вы можете сгенерировать ключ для RSA, AES и других алгоритмов шифрования работающих по схожему принципу."<<endl;
