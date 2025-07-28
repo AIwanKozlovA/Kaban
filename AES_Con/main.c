@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
     #ifdef _WIN32
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     #endif
 
     /*/*unsigned short secret_key1[16],secret_key2[16]; char* ss = "86b00e35b518bcf13a3994e51158ea575e300c85dca0a4f10fcc05d3873b1026";
