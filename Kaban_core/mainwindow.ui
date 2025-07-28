@@ -6,16 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>693</width>
-    <height>711</height>
+    <width>688</width>
+    <height>716</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>688</width>
+    <height>716</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>688</width>
+    <height>716</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Кабан</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Загрузки/Кабан.png</normaloff>../Загрузки/Кабан.png</iconset>
+    <normaloff>Kaban_imresizer.svg</normaloff>Kaban_imresizer.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QTextEdit{
@@ -39,7 +51,7 @@ QLineEdit{
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>681</width>
+      <width>691</width>
       <height>691</height>
      </rect>
     </property>
@@ -138,6 +150,71 @@ QLineEdit{
          <string>Расшифровать файл</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>70</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>120</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string> ❌</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>100</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_95">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>350</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_96">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>320</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -202,7 +279,7 @@ QLineEdit{
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>70</x>
           <y>390</y>
           <width>171</width>
           <height>18</height>
@@ -277,7 +354,7 @@ QLineEdit{
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>70</x>
           <y>280</y>
           <width>121</width>
           <height>18</height>
@@ -378,70 +455,37 @@ QLineEdit{
          <string>доп. Сид</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButton_20">
+        <property name="geometry">
+         <rect>
+          <x>46</x>
+          <y>280</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>🖪</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_21">
+        <property name="geometry">
+         <rect>
+          <x>46</x>
+          <y>390</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>🖪</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
         <string>Быстро зашифровать</string>
        </attribute>
-       <widget class="QLineEdit" name="lineEdit_3">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>40</y>
-          <width>261</width>
-          <height>26</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_17">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>10</y>
-          <width>171</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>e</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_18">
-        <property name="geometry">
-         <rect>
-          <x>340</x>
-          <y>10</y>
-          <width>171</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>n</string>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="textEdit_13">
-        <property name="geometry">
-         <rect>
-          <x>340</x>
-          <y>40</y>
-          <width>261</width>
-          <height>171</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_29">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>180</y>
-          <width>141</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Зашифровать текст</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_30">
         <property name="geometry">
          <rect>
@@ -455,17 +499,59 @@ QLineEdit{
          <string>Зашифровать файл</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="textEdit_61">
+       <widget class="QPushButton" name="pushButton_97">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>270</y>
-          <width>611</width>
-          <height>131</height>
+          <x>650</x>
+          <y>300</y>
+          <width>25</width>
+          <height>25</height>
          </rect>
         </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
        </widget>
-       <widget class="QTextEdit" name="textEdit_62">
+       <widget class="QPushButton" name="pushButton_98">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>270</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_103">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>440</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_104">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>410</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="textEdit_71">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -475,522 +561,129 @@ QLineEdit{
          </rect>
         </property>
        </widget>
-       <widget class="QTabWidget" name="tabWidget_2">
+       <widget class="QPushButton" name="pushButton_70">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>-30</y>
-          <width>691</width>
-          <height>591</height>
+          <x>180</x>
+          <y>230</y>
+          <width>131</width>
+          <height>26</height>
          </rect>
         </property>
-        <property name="currentIndex">
-         <number>2</number>
+        <property name="text">
+         <string>Зашифровать файл</string>
         </property>
-        <widget class="QWidget" name="tab_29">
-         <attribute name="title">
-          <string>Основное</string>
-         </attribute>
-         <widget class="QTextEdit" name="textEdit_63">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>70</y>
-            <width>611</width>
-            <height>191</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_64">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>320</y>
-            <width>611</width>
-            <height>191</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_87">
-          <property name="geometry">
-           <rect>
-            <x>250</x>
-            <y>270</y>
-            <width>121</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Открытый ключ</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_62">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>20</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Зашифровать текст</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_63">
-          <property name="geometry">
-           <rect>
-            <x>180</x>
-            <y>20</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Расшифровать текст</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_64">
-          <property name="geometry">
-           <rect>
-            <x>330</x>
-            <y>20</y>
-            <width>131</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Зашифровать файл</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_65">
-          <property name="geometry">
-           <rect>
-            <x>470</x>
-            <y>20</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Расшифровать файл</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="tab_30">
-         <attribute name="title">
-          <string>Меню ключей</string>
-         </attribute>
-         <widget class="QTextEdit" name="textEdit_65">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>80</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="lineEdit_14">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>330</y>
-            <width>261</width>
-            <height>26</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_88">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>50</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>p</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_66">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>80</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_67">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>430</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_89">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>390</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Закрытый ключ</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_90">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>300</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>n</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_91">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>300</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>e</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_92">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>50</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>q</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_93">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>410</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>d</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_68">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>330</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_94">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>280</y>
-            <width>121</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Открытый ключ</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_66">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>20</y>
-            <width>101</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Считать ключ</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_67">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>20</y>
-            <width>211</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Считать ключ для шифрования</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_68">
-          <property name="geometry">
-           <rect>
-            <x>160</x>
-            <y>20</y>
-            <width>111</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Сохранить ключ</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="tab_31">
-         <attribute name="title">
-          <string>Быстро зашифровать</string>
-         </attribute>
-         <widget class="QLineEdit" name="lineEdit_15">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>50</y>
-            <width>261</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>65537</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_95">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>30</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>e</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_96">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>30</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>n</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_69">
-          <property name="geometry">
-           <rect>
-            <x>340</x>
-            <y>50</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_69">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>230</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Зашифровать текст</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_70">
-          <property name="geometry">
-           <rect>
-            <x>180</x>
-            <y>230</y>
-            <width>131</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Зашифровать файл</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_70">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>270</y>
-            <width>611</width>
-            <height>131</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_71">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>410</y>
-            <width>611</width>
-            <height>131</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_8">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>10</y>
-            <width>121</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Открытый ключ</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_16">
-          <property name="geometry">
-           <rect>
-            <x>160</x>
-            <y>6</y>
-            <width>101</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Считать ключ</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_17">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>6</y>
-            <width>111</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Сохранить ключ</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="tab_32">
-         <attribute name="title">
-          <string>Быстро расшифровать</string>
-         </attribute>
-         <widget class="QLabel" name="label_97">
-          <property name="geometry">
-           <rect>
-            <x>40</x>
-            <y>330</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Закрытый ключ</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_72">
-          <property name="geometry">
-           <rect>
-            <x>40</x>
-            <y>370</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_98">
-          <property name="geometry">
-           <rect>
-            <x>40</x>
-            <y>350</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>d</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_99">
-          <property name="geometry">
-           <rect>
-            <x>320</x>
-            <y>340</y>
-            <width>171</width>
-            <height>18</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>n</string>
-          </property>
-         </widget>
-         <widget class="QTextEdit" name="textEdit_73">
-          <property name="geometry">
-           <rect>
-            <x>320</x>
-            <y>370</y>
-            <width>261</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_71">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>70</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Расшифровать текст</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_72">
-          <property name="geometry">
-           <rect>
-            <x>240</x>
-            <y>70</y>
-            <width>141</width>
-            <height>26</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Расшифровать файл</string>
-          </property>
-         </widget>
-        </widget>
+       </widget>
+       <widget class="QTextEdit" name="textEdit_69">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>50</y>
+          <width>261</width>
+          <height>171</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_17">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>6</y>
+          <width>111</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Сохранить ключ</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="textEdit_70">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>270</y>
+          <width>611</width>
+          <height>131</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>10</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Открытый ключ</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_69">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>230</y>
+          <width>141</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Зашифровать текст</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_95">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>30</y>
+          <width>171</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>e</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_15">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>50</y>
+          <width>261</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>65537</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_16">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>6</y>
+          <width>101</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Считать ключ</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_96">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>30</y>
+          <width>171</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>n</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_3">
@@ -1126,6 +819,58 @@ QLineEdit{
         </property>
         <property name="text">
          <string>Считать ключ</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_105">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>300</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_106">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>270</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_107">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>440</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_108">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>410</y>
+          <width>25</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>📋</string>
         </property>
        </widget>
       </widget>
@@ -1339,6 +1084,58 @@ QLineEdit{
        </layout>
       </widget>
      </widget>
+     <widget class="QPushButton" name="pushButton_99">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>150</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✕</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_100">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>120</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>📋</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_101">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>370</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✕</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_102">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>340</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>📋</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">
@@ -1362,14 +1159,40 @@ QLineEdit{
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>690</y>
+      <x>608</x>
+      <y>694</y>
       <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>Версия: V1</string>
+     <string>Версия: V1.5</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_109">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>690</y>
+      <width>41</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ru</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_110">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>690</y>
+      <width>30</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>☀</string>
     </property>
    </widget>
   </widget>
