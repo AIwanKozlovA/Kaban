@@ -2,7 +2,7 @@
 g++ -Wall -g -O2 main.cpp -o main -lgmpxx
 g++ -Wall -O2 main.cpp -o main -lgmpxx -lgmp -lcrypto
 Компиляция для Linux (Примечание, чтобы компилировать файлы для Linux желательно установить GMP)
-g++ -Wall -O2 RSA_con_nw.cpp -o RSA_C -lgmpxx -lgmp -lcrypto
+g++ -Wall -O2 RSA_С.cpp -o RSA_C -lgmpxx -lgmp -lcrypto (стар RSA_con_nw.cpp)
 
 
 Компиляция для Windows в моём случае на Linux перед командой для компиляции опишу как установить необходимые библиотеки для mingw, чтобы вы не потеряли непреличное количество времени на тех ошибках, которые совершил я.
