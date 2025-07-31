@@ -66,7 +66,9 @@ int main(int argc, char* argv[]) {
     #ifdef _WIN32
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "ru_RU.UTF-8");
+    setlocale(LC_ALL, ""); // хоть сама кириллица красиво не выводятся в консоль зато файлы с кириллицей открываются
+    //setlocale(LC_ALL, "en_US.UTF-8"); // или "ru_RU.UTF-8"
+    //setlocale(LC_ALL, "ru_RU.UTF-8");
     #endif
 
     /*/*unsigned short secret_key1[16],secret_key2[16]; char* ss = "86b00e35b518bcf13a3994e51158ea575e300c85dca0a4f10fcc05d3873b1026";
@@ -165,12 +167,21 @@ int main(int argc, char* argv[]) {
             //printf("dl = %d\n", dl);
             //printf("Hex data: %s\n", hexStr);
             //printf("%04X", matrix[0][0]);
-            printf("\n\0");
+            #ifdef _WIN32
+            // пока для других особенностей
+            #else
+            printf("\n\0"); //если вернёшь текст раскоментировать
+            #endif
             //printf("%04X\n", matrix[0][0]);
             char* text1 = malloc(sizeof(char)*dl); char* ss = argv[2];
             Rasfif_AES_text(text1, matrix, &dl, ss);
 
+            #ifdef _WIN32
+            // пока для других особенностей
+            #else
             printf("%s\n", text1);
+            #endif
+            //printf("%s\n", text1);
             free(text1);
             //free(hexStr);
             //free(p);

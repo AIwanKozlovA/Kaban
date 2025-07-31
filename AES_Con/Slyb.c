@@ -99,12 +99,26 @@ void Sfif_AES_text(char* original_text,unsigned short matrix_shif[COUNT_BLOCKS_F
     }
 }
 
+void output_raw_data(const unsigned short block[16]) {
+    // Выводим данные в бинарном виде (как сырые байты)
+    fwrite(block, sizeof(unsigned short), 16, stdout);
+    fflush(stdout); // Важно для немедленной отправки
+}
+
+
 void Rasfif_AES_text(char*rashif_text, unsigned short matrix_shif[COUNT_BLOCKS_FOR_TEXT][16], int* block_count, char* secret_key){ // расшифровка текста
     unsigned short secret_key_block[16];
     text_to_block(secret_key, secret_key_block);
     unsigned short matrix_rash[COUNT_BLOCKS_FOR_TEXT][16];
     for(int i = 0; i < *block_count; i++){
         decryption(matrix_shif[i],matrix_rash[i], secret_key_block);
+        #ifdef _WIN32
+        unsigned char *byte_ptr = (unsigned char *)matrix_rash[i];
+        for (int i = 0; i < 16 * 2; i++) {  // 16 элементов × 2 байта
+            if(byte_ptr[i] > 0) printf("%02x ", byte_ptr[i]);
+        }
+        printf("\n");
+        #endif
     }
     blocks_to_text(matrix_rash, *block_count, rashif_text);
 }
