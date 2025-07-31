@@ -142,6 +142,7 @@ public: //private:
             //"   background-color: #3a3a3a;"
             "   background-color: #e1e6eb;"  // Светло-серый фон кнопок
             "   color: white;"
+            "border-radius: 6px;"
             "}"
             "QPushButton:hover {"
             "   background-color: #4a4a4a;"
@@ -166,6 +167,7 @@ public: //private:
             "QPushButton {"
             "   background-color: #e0e0e0;"
             "   color: black;"
+            "border-radius: 6px;"
             "}"
             "QPushButton:hover {"
             "   background-color: #d0d0d0;"

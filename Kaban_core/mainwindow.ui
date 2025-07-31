@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>Kaban_imresizer.svg</normaloff>Kaban_imresizer.svg</iconset>
+    <normaloff>Kaban_imresizer.png</normaloff>Kaban_imresizer.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QTextEdit{

@@ -146,7 +146,55 @@ void MainWindow::on_pushButton_55_clicked() // шифрование текста
         #endif
 
 
+        #ifdef Q_OS_WIN
+                connect(process, &QProcess::readyReadStandardOutput, [process, this]() {
+                    //QString output = process->readAllStandardOutput().trimmed();
 
+                    QByteArray hexData = process->readAllStandardOutput().trimmed();
+
+                    // Конвертируем hex в байты
+                    QByteArray bytes = QByteArray::fromHex(hexData);
+
+                    // Создаём декодер (автоматически определяет системную кодировку)
+                    QStringDecoder decoder(QStringDecoder::System);
+
+                    // Декодируем в QString
+                    QString result = decoder.decode(bytes);
+
+                    // Если известно, что данные в UTF-8:
+                    // QStringDecoder utf8Decoder(QStringDecoder::Utf8);
+                    // QString result = utf8Decoder.decode(bytes);
+
+                    if (decoder.hasError()) {
+                        qWarning() << "Ошибка декодирования!";
+                        result = "Неверная кодировка данных";
+                    }
+
+
+                    qDebug() << "Получены данные:" << result;
+                    ui->textEdit_19->setPlainText(result);
+                    // Можно обновить GUI (например, QLabel->setText(output))
+                });
+
+
+                /*// Соединяем сигналы процесса
+        connect(process, &QProcess::readyReadStandardOutput, [process, this]() {
+            QString output = process->readAllStandardOutput().trimmed();
+            qDebug() << "Получены данные:" << output;
+            ui->textEdit_19->setPlainText(output);
+            // Можно обновить GUI (например, QLabel->setText(output))
+        });*/
+
+                connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                        [process, this](int exitCode, QProcess::ExitStatus status) {
+                            if (status == QProcess::CrashExit) {
+                                qDebug() << "Процесс упал!";
+                            } else {
+                                qDebug() << "Процесс завершён с кодом:" << exitCode;
+                            }
+                            process->deleteLater();  // Удаляем процесс после завершения
+                        });
+        #else
         // Соединяем сигналы процесса
         connect(process, &QProcess::readyReadStandardOutput, [process, this]() {
             QString output = process->readAllStandardOutput().trimmed();
@@ -164,6 +212,7 @@ void MainWindow::on_pushButton_55_clicked() // шифрование текста
                     }
                     process->deleteLater();  // Удаляем процесс после завершения
                 });
+        #endif
         QStringList arguments;
         arguments << isx_text << key << "-t0"; // Здесь добавьте ваши аргументы
         // Запускаем процесс (путь может быть абсолютным или относительным)

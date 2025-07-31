@@ -11,7 +11,9 @@
 #include <QtCore/QDir>
 #include <QtWidgets/QTextEdit>
 #include <QtConcurrent/QtConcurrentRun>
-
+#ifdef Q_OS_WIN
+#include <QStringDecoder>
+#endif
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -162,7 +164,7 @@ void MainWindow::on_pushButton_50_clicked() // расшифруем файл
         if(name_shif_file != ""){
             QString name_rashif_file = QFileDialog::getSaveFileName(this, "Сохранить как");
             //Shif_file(e,n, myFile, name_shif_file);
-            if(name_rashif_file != 0) raShif_file(d, n, name_shif_file, name_rashif_file);
+            if(name_rashif_file != "") raShif_file(d, n, name_shif_file, name_rashif_file);
         }
     }else{
         QMessageBox msgBox;  // диалоговое окно
@@ -182,7 +184,7 @@ void MainWindow::on_pushButton_4_clicked()
         if(name_shif_file != ""){
             QString name_rashif_file = QFileDialog::getSaveFileName(this, "Сохранить как");
             //Shif_file(e,n, myFile, name_shif_file);
-            if(name_rashif_file != 0) raShif_file(d, n, name_shif_file, name_rashif_file);
+            if(name_rashif_file != "") raShif_file(d, n, name_shif_file, name_rashif_file);
         }
     }else{
         QMessageBox msgBox;  // диалоговое окно
@@ -321,8 +323,46 @@ void MainWindow::ra_shif_text(QString d, QString n,QString text_for_rash, QTextE
 #elif defined(Q_OS_MAC)
         QString programPath = workingDir + "/RSA_C";
 #endif
+        #ifdef Q_OS_WIN
+        connect(process, &QProcess::readyReadStandardOutput, [process, this, text_field]() {
+            //QString output = process->readAllStandardOutput().trimmed();
+
+            QByteArray hexData = process->readAllStandardOutput().trimmed();
+
+            // Конвертируем hex в байты
+            QByteArray bytes = QByteArray::fromHex(hexData);
+
+            // Создаём декодер (автоматически определяет системную кодировку)
+            QStringDecoder decoder(QStringDecoder::System);
+
+            // Декодируем в QString
+            QString result = decoder.decode(bytes);
+
+            // Если известно, что данные в UTF-8:
+            // QStringDecoder utf8Decoder(QStringDecoder::Utf8);
+            // QString result = utf8Decoder.decode(bytes);
+
+            if (decoder.hasError()) {
+                qWarning() << "Ошибка декодирования!";
+                result = "Неверная кодировка данных";
+            }
 
 
+            qDebug() << "Получены данные:" << result;
+            text_field->setPlainText(result);
+            // Можно обновить GUI (например, QLabel->setText(output))
+        });
+
+        connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+                [process, this](int exitCode, QProcess::ExitStatus status) {
+                    if (status == QProcess::CrashExit) {
+                        qDebug() << "Процесс упал!";
+                    } else {
+                        qDebug() << "Процесс завершён с кодом:" << exitCode;
+                    }
+                    process->deleteLater();  // Удаляем процесс после завершения
+                });
+        #else
         // Соединяем сигналы процесса
         connect(process, &QProcess::readyReadStandardOutput, [process, this, text_field]() {
             QString output = process->readAllStandardOutput().trimmed();
@@ -340,6 +380,7 @@ void MainWindow::ra_shif_text(QString d, QString n,QString text_for_rash, QTextE
                     }
                     process->deleteLater();  // Удаляем процесс после завершения
                 });
+        #endif
         QStringList arguments;
         arguments << text_for_rash << d << n << "-t1"; // Здесь добавьте ваши аргументы
         // Запускаем процесс (путь может быть абсолютным или относительным)
